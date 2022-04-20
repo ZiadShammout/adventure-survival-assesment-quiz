@@ -62,12 +62,15 @@ def run_quiz():
         print("You're Wrong! the correct answer is " + questionss.get(key) + "\n" )
 
 
-# Start of program
-welcome()
-name()
-questions()
-run_quiz()
-end()
+def main():
+  welcome()
+  name()
+  questions()
+  run_quiz()
+  end()
+
+# Start of program all functions run through one main function
+main()
 
 
 
