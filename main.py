@@ -1,3 +1,4 @@
+#component 1: welcomes users to my survival quiz and give instructions
 def welcome():
   print("""Hello and welcome to an adventure/survival quiiizzz!, in this quiz we will test your ability to think in desperate situations!!! 
 ***********************************************************************************
@@ -13,6 +14,8 @@ when this happens you will be taken back to the start of the quiz!!enjoyyy!!!
 ***********************************************************************************
 """)
 
+#component 2: this function asks fo th3e name, checks its alpha 
+  #it has a while loop so it keeps asking untill user enters a letter
 def name():
   print("Please only enter name in letters")
   while True:
@@ -27,7 +30,7 @@ def name():
         
       """)
 
-
+#component 3, quiz running questions, all questions and answers stored as key in a dictionary, the value is the correct choice
 def questions():
   global score
   
@@ -47,21 +50,25 @@ questionss = { 'Question 1 :  you wake up, take off your seat belt,stand up and 
 'Question 7 : you and your fellow survivor head towards the boat symbol and after long hours you finaly reach your destination, and infront of you,you have a boat, but there is a little bit of an issue.... the boat can only take one person at a time and only has fuel for one trip,knowing this your fellow survivor backstabs you and quickly attemts to take the boat for him self, what should you do??? \n\n a: quickly run, jump on him and start trying to beat him up\n\n b:you may not have much time but you attempt to run,grab the nearest stick and attempt to destroy the boat.\n\n  c:you may not have much time but try to quickly grab a large stick and attempt to remove him from existence.\n\n'  :'c',     
              
 'Question 8 : you quickly run to grab a large stick,luckily there was one nearby, but it still took a bit of time, you sprint back to see you fellow survivor attempting to pull start the boat, luckily the boat engine was cold and was not turned on in a while and could not start 1st try, you aproach him and you swing but he doges!! you attempt to swing again , in attempt to doge he slips of the boat and falls in the water!! what should you do????!!!\n\n a:drown him, jump on him and make sure his head stays underwater. \n\n  b: quickly hop on the boat while you can and try starting it so u can leave asap.\n\n' :'a'}
+
+#This is the mechanism that loops through each key in the dictionary, then checks the user input against the value for that key and compares if its correct or incorrect
+def run_quiz():
+  score=0
+  for key in questionss.keys():
+    user_answer=input(key).lower().strip()
+    if questionss.get(key)==user_answer:
+        score+=1
+        print(" Correct! your score is " + str(score) + " \n\n  ") 
      
+    else:
+        print("You're Wrong! the correct answer is " + questionss.get(key) +  " your score is" + str(score) + "\n" )
+
+#this function just prints to the console the last message after quiz ends
 def end(): 
   print ('you quickly jump ontop of him and shove his head in the water making sure it stays there, your fellow traitor struggles as u drown him and boink!! the traitor has grabbed your stick and wacked it on your head, you then fall of him as he starts to drown you back, as you are about to pass out something aproaches... your fellow lion thing!!!!?!?!?! it has remembered your kindness and has come to you back for it!!! the lion quickly comes and dispose of the traitor. the traitor is now gone,there is nothing left but you,the lion and the boat,you give the lion a freindly chin scratch as you prepare the boat and leave.you are sad you have to leave the fellow lion but it is what is is. you grab the compass you found on your boat,head south east, eat some rotting plane food and finaly arive home. the end')
 
 
-def run_quiz():
-  for key in questionss.keys():
-    user_answer=input(key).lower().strip()
-    if questionss.get(key)==user_answer:
-        print(" Correct! \n\n  ") 
-     
-    else:
-        print("You're Wrong! the correct answer is " + questionss.get(key) + "\n" )
-
-
+#I added all previous functions to just one main function to tidy up the whole quiz
 def main():
   welcome()
   name()
@@ -69,7 +76,7 @@ def main():
   run_quiz()
   end()
 
-# Start of program all functions run through one main function
+# Start of program all functions run through one main function only
 main()
 
 
